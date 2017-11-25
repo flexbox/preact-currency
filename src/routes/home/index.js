@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
+import { Input, Button } from 'reactbulma';
 
 export default class Home extends Component {
   state = {
@@ -46,15 +47,19 @@ export default class Home extends Component {
         <div>Current time: {new Date(time).toLocaleString()}</div>
 
         <form onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              type="number"
-              value={this.state.value}
-              onChange={this.handleChange}
-              autofocus
-            />
-          </label>
-          <input type="submit" value="Submit" />
+          <input
+            type="number"
+            class="input is-medium"
+            value={this.state.value}
+            onChange={this.handleChange}
+            autofocus
+          />
+          <button
+            type="submit"
+            class="button is-info is-medium"
+          >
+            Convert!
+          </button>
         </form>
       </div>
     );

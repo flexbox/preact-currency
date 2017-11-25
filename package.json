@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "currency-default",
+  "name": "currency",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -25,6 +25,7 @@
   "dependencies": {
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
-    "preact-router": "^2.5.5"
+    "preact-router": "^2.5.5",
+    "reactbulma": "^1.1.1"
   }
 }

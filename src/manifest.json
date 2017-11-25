@@ -1,11 +1,11 @@
 {
-  "name": "currency-default",
-  "short_name": "currency-default",
+  "name": "currency",
+  "short_name": "currency",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
-  "theme_color": "#673ab8",
+  "theme_color": "#f9f9fa",
   "icons": [
     {
       "src": "/assets/icons/android-chrome-192x192.png",
