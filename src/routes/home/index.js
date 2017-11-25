@@ -15,6 +15,22 @@ export default class Home extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // gets called when this route is navigated to
+  componentDidMount() {
+    // start a timer for the clock:
+    this.timer = setInterval(this.updateTime, 10000);
+  }
+
+  // gets called just before navigating away from the route
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  // update the current time
+  updateTime = () => {
+    this.setState({ time: Date.now() });
+  };
+
   handleChange(event) {
     this.setState({value: event.target.value});
   }
@@ -24,9 +40,11 @@ export default class Home extends Component {
     event.preventDefault();
   }
 
-  render() {
+  render({  }, { time, money }) {
     return (
       <div class={style.home}>
+        <div>Current time: {new Date(time).toLocaleString()}</div>
+
         <form onSubmit={this.handleSubmit}>
           <label>
             <input
