@@ -1,16 +1,16 @@
 import { h, Component } from 'preact';
-import style from './style';
+import style from './home';
 import { Input, Button } from 'reactbulma';
+import { api } from '../../utils/api';
 
 export default class Home extends Component {
-  state = {
-    time: Date.now(),
-    money: ''
-  };
 
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {
+      value: '54',
+      time: Date.now()
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,16 +37,21 @@ export default class Home extends Component {
   }
 
   handleSubmit(event) {
-    alert('Currency submitted: ' + this.state.value);
+    // alert('Currency submitted: ' + this.state.value);
     event.preventDefault();
+    api.getGithubInfo(flexbox)
+      .then(function (result) {
+        console.log(result);
+      });
+    debugger
   }
 
   render({  }, { time, money }) {
     return (
       <div class={style.home}>
-        <div>Current time: {new Date(time).toLocaleString()}</div>
-
-        <form onSubmit={this.handleSubmit}>
+        <form
+          class={style.search}
+          onSubmit={this.handleSubmit}>
           <input
             type="number"
             class="input is-medium"
@@ -61,6 +66,12 @@ export default class Home extends Component {
             Convert!
           </button>
         </form>
+
+        <p>
+          <small>
+            Current time: {new Date(time).toLocaleString()}
+          </small>
+        </p>
       </div>
     );
   }

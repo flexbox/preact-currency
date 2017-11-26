@@ -23,6 +23,7 @@
     "preact-cli": "^2.0.0"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
     "preact-router": "^2.5.5",
