@@ -1,27 +1,33 @@
 import { h, Component } from 'preact';
-import { Router } from 'preact-router';
+import { connect } from 'preact-redux';
+import reduce from '../reducers';
+import * as actions from '../actions';
 
-import Header from './header';
-import Home from '../routes/home';
-// import Home from 'async!../routes/home';
+import CurrencyList from './currency-list';
+import { Input } from 'reactbulma';
 
+@connect(reduce, actions)
 export default class App extends Component {
-	/** Gets fired when the route changes.
-	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
-	 *	@param {string} event.url	The newly routed URL
-	 */
-	handleRoute = e => {
-		this.currentUrl = e.url;
+	addConversion = () => {
+		this.props.addCurrency(this.state.money);
+		this.setState({ money: '' });
 	};
 
-	render() {
+	updateMoney = (e) => {
+		this.setState({ money: e.target.value });
+	};
+
+	render({ currencies }, { money }) {
 		return (
 			<div id="app">
-				<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
-				<Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-				</Router>
+				<form onSubmit={this.addConversion} action="javascript:">
+					<Input value={money} onInput={this.updateMoney} placeholder="42 USD" autofocus />
+				</form>
+				<ul>
+					{ currencies.map(currency => (
+						<CurrencyList key={currency.id} currency={currency} />
+					)) }
+				</ul>
 			</div>
 		);
 	}

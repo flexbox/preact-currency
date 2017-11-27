@@ -20,5 +20,5 @@ For detailed explanation on how things work, checkout the [CLI Readme](https://g
 
 ## TODO
 
-- [ ] add `.eslint` rules
-- [ ] move Roboto font on `<head>`
+- [ ] Update `.eslint` rules
+- [ ] Add routing for conversion with url like `/usd/eur/100/`

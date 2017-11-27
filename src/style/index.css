@@ -18,4 +18,37 @@ html, body {
 
 #app {
 	height: 100%;
+  padding: 5rem 2rem;
+}
+
+.header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 56px;
+	padding: 0;
+	background: #fff;
+	box-shadow: 0 1px 4px rgba(12,12,13,.1);
+	z-index: 50;
+}
+
+.header h1 {
+	float: left;
+	margin: 0;
+	padding: 0 2rem;
+	font-size: 18px;
+	line-height: 56px;
+	font-weight: 900;
+	color: #363A56;
+}
+
+.home {
+	padding: 4rem 2rem;
+	min-height: 100%;
+	width: 100%;
+}
+
+.search {
+  display: flex;
 }
