@@ -29,7 +29,7 @@ export default class Header extends Component {
 				<h1>Currency</h1>
 				<p>
 					<small>
-						Current time: {new Date(time).toLocaleString()}
+						Last Update: {new Date(time).toLocaleString()}
 					</small>
 				</p>
 			</header>

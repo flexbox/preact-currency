@@ -5,8 +5,10 @@ export function addCurrency(money) {
 	axios
 		.get(`${API_ROOT}`)
 		// .then(res => this.setState({ posts: res.data }))
-		.then(res => console.log(res.data))
+		.then(res => res.data.rates)
 		.catch(err => console.log(err));
+
+	// let conversion = money * res;
 
 	return {
 		type: 'SEARCH',
