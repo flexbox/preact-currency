@@ -31,16 +31,21 @@ html, body {
 	background: #fff;
 	box-shadow: 0 1px 4px rgba(12,12,13,.1);
 	z-index: 50;
+  display: flex;
 }
 
 .header h1 {
-	float: left;
-	margin: 0;
 	padding: 0 2rem;
 	font-size: 18px;
-	line-height: 56px;
 	font-weight: 900;
 	color: #363A56;
+}
+.header h1,
+.header p {
+	line-height: 56px;
+}
+.header p {
+	opacity: 0.4;
 }
 
 .home {

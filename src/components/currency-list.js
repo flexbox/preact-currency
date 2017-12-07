@@ -8,7 +8,8 @@ export default class CurrencyList extends Component {
 	render({ currency }) {
 		return (
 			<li>
-				{ ' ' + currency.money }
+				{ ' ' + currency.money } USD
+				{ ' ' + currency.money } EUR
 			</li>
 		);
 	}
