@@ -1,19 +1,59 @@
-import { createStore } from 'redux';
+import {
+	createStore,
+	applyMiddleware
+} from 'redux';
+import {
+	composeWithDevTools
+} from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import axios from 'axios';
 
-let ACTIONS = {
-	SEARCH: ({ currencies, ...state }, { money }) => ({
-		currencies: [...currencies, {
-			id: Math.random().toString(36).substring(2),
-			money
-		}],
-		...state
-	})
+const INITIAL_STATE = {
+	currencies: [],
+	money: 42
 };
 
-const INITIAL = {
-	currencies: []
+export const ACTIONS = {
+	FETCH_CHANGE: 'FETCH_CHANGE',
+	SEARCH_FILTERS: 'SEARCH_FILTERS'
 };
 
-export default createStore( (state, action) => (
-	action && ACTIONS[action.type] ? ACTIONS[action.type](state, action) : state
-), INITIAL, typeof devToolsExtension==='function' ? devToolsExtension() : undefined);
+export const reducer = ( state = INITIAL_STATE, action ) => {
+	switch ( action.type ) {
+		case ACTIONS.FETCH_CHANGE:
+			return {
+				...state,
+				currencies: action.currencies
+			};
+		// case ACTIONS.SEARCH_FILTERS:
+		// 	return {
+		// 		...state,
+		// 		searchFilters: action.searchFilters
+		// 	};
+		default:
+			return state;
+	}
+};
+
+export const fetchChange = () => ( dispatch, getState ) => {
+	return axios.get( 'https://openexchangerates.org/api/latest.json?app_id=d28c2423b43d4e0bb89cf18e790df0b3')
+		.then( ( result ) => {
+			dispatch( {
+				type: ACTIONS.FETCH_CHANGE,
+				currencies: result.data.currencies
+			});
+		});
+};
+
+export const setSearchFilters = ( searchFilters ) => ( dispatch ) => {
+	dispatch( {
+		type: ACTIONS.SEARCH_FILTERS,
+		searchFilters
+	} );
+};
+
+export const initStore = ( INITIAL_STATE = INITIAL_STATE ) => createStore(
+	reducer,
+	INITIAL_STATE,
+	composeWithDevTools( applyMiddleware( thunkMiddleware ) )
+);

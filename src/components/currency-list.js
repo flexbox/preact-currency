@@ -9,6 +9,7 @@ export default class CurrencyList extends Component {
 		return (
 			<li>
 				{ ' ' + currency.money }
+				{this.state.exchange}
 			</li>
 		);
 	}

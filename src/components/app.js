@@ -1,12 +1,8 @@
 import { h, Component } from 'preact';
-import { connect } from 'preact-redux';
-import reduce from '../reducers';
-import * as actions from '../actions';
 
 import CurrencyList from './currency-list';
 import { Input } from 'reactbulma';
 
-@connect(reduce, actions)
 export default class App extends Component {
 	addConversion = () => {
 		this.props.addCurrency(this.state.money);
